@@ -27,7 +27,7 @@ const INITIAL_MOCK_ACCOUNTS = [
     status: "ACTIVE",
     project_name: "Kiểm toán Tài chính 2026",
     assignee_name: "Trần Thị Mai (EY Vietnam)",
-    assignee_email: "mai.tran@ntq-solution.com.vn
+    assignee_email: "mai.tran@ntq-solution.com.vn",
     manager_pic: "Quang Đặng (quang.dang1@ntq-solution.com.vn)",
     created_at: "2026-05-15",
     expires_at: "2026-08-25", // 8 days remaining (<14 days)
@@ -43,7 +43,7 @@ const INITIAL_MOCK_ACCOUNTS = [
     status: "ACTIVE",
     project_name: "Hệ thống CRM v3",
     assignee_name: "Lê Hoàng Nam (FPT Soft)",
-    assignee_email: "namlh@ntq-solution.com.vn
+    assignee_email: "namlh@ntq-solution.com.vn",
     manager_pic: "Quang Đặng (quang.dang1@ntq-solution.com.vn)",
     created_at: "2026-01-10",
     expires_at: "2026-08-10", // Đã quá hạn 7 ngày
@@ -59,7 +59,7 @@ const INITIAL_MOCK_ACCOUNTS = [
     status: "ACTIVE",
     project_name: "Tích hợp VNPay QR",
     assignee_name: "Đỗ Quốc Anh (VNPay)",
-    assignee_email: "anhdq@ntq-solution.com.vn"
+    assignee_email: "anhdq@ntq-solution.com.vn",
     manager_pic: "Quang Đặng (quang.dang1@ntq-solution.com.vn)",
     created_at: "2026-07-01",
     expires_at: "2026-10-30",
@@ -75,7 +75,7 @@ const INITIAL_MOCK_ACCOUNTS = [
     status: "REVOKED",
     project_name: "Audit An toàn Thông tin",
     assignee_name: "Phạm Minh Đức (CyRadar)",
-    assignee_email: "ducpm@ntq-solution.com.vn"
+    assignee_email: "ducpm@ntq-solution.com.vn",
     manager_pic: "Quang Đặng (quang.dang1@ntq-solution.com.vn)",
     created_at: "2026-03-01",
     expires_at: "2026-04-01",
