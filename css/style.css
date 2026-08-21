@@ -752,24 +752,32 @@ body {
   border-radius: var(--radius-sm);
   font-size: 0.775rem;
   font-weight: 500;
-  padding: 0.35rem 0.55rem;
+  height: 30px;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: center;
+  gap: 0.35rem;
   cursor: pointer;
   transition: all var(--transition-fast);
   user-select: none;
+  font-family: inherit;
+  white-space: nowrap;
 }
 
 .btn-action-text {
   padding: 0 0.65rem;
   min-width: 76px;
+  height: 30px;
 }
 
 .btn-action-icon {
   width: 30px;
   height: 30px;
   padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-action:hover {
