@@ -262,9 +262,17 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-close-modal="accountModal">Hủy bỏ</button>
-          <button type="submit" class="btn btn-primary">Lưu Tài Khoản</button>
+        <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <button type="button" id="btnDeleteInModal" class="btn btn-danger" style="display: none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              Xóa Vĩnh Viễn
+            </button>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" class="btn btn-secondary" data-close-modal="accountModal">Hủy bỏ</button>
+            <button type="submit" class="btn btn-primary">Lưu Tài Khoản</button>
+          </div>
         </div>
       </form>
     </div>

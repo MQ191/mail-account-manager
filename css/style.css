@@ -689,9 +689,13 @@ body {
 .type-tag {
   font-size: 0.725rem;
   font-weight: 600;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   border-radius: var(--radius-sm);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .type-tag-project {
@@ -748,15 +752,12 @@ body {
   border-radius: var(--radius-sm);
   font-size: 0.775rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  padding: 0.35rem 0.55rem;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  white-space: nowrap;
-  height: 30px;
-  box-sizing: border-box;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
   user-select: none;
 }
 
@@ -799,6 +800,18 @@ body {
   border-color: var(--danger-border);
   color: var(--danger-text);
   background: var(--danger-bg);
+}
+
+.btn-action-delete {
+  color: var(--danger-text);
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.btn-action-delete:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
 }
 
 /* Empty State */

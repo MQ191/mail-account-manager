@@ -123,6 +123,14 @@ const App = {
     document.getElementById('revokeForm')?.addEventListener('submit', (e) => this.handleSaveRevoke(e));
     document.getElementById('batchRevokeForm')?.addEventListener('submit', (e) => this.handleSaveBatchRevoke(e));
 
+    // Delete Button in Edit Modal
+    document.getElementById('btnDeleteInModal')?.addEventListener('click', () => {
+      if (this.selectedAccountId) {
+        this.closeModal('accountModal');
+        this.handleDeleteAccount(this.selectedAccountId);
+      }
+    });
+
     // File Input for CSV
     const csvFileInput = document.getElementById('csvFileInput');
     csvFileInput?.addEventListener('change', (e) => this.handleCSVFileSelected(e));
@@ -399,7 +407,12 @@ const App = {
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                   <span>Thu hồi</span>
                 </button>
-              ` : ''}
+              ` : `
+                <button class="btn-action btn-action-text btn-action-delete" title="Xóa vĩnh viễn khỏi sổ cái" onclick="App.handleDeleteAccount('${acc.id}')">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                  <span>Xóa</span>
+                </button>
+              `}
 
               <button class="btn-action btn-action-icon" title="Copy mẫu bàn giao" onclick="App.copyHandoverSnippet('${acc.id}')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
@@ -444,6 +457,7 @@ const App = {
     const modal = document.getElementById('accountModal');
     const title = document.getElementById('accountModalTitle');
     const form = document.getElementById('accountForm');
+    const deleteBtn = document.getElementById('btnDeleteInModal');
     form.reset();
 
     if (accountId) {
@@ -459,6 +473,7 @@ const App = {
         document.getElementById('accExpiresAt').value = acc.expires_at || '';
         document.getElementById('accNotes').value = acc.notes || '';
       }
+      if (deleteBtn) deleteBtn.style.display = 'inline-flex';
     } else {
       title.textContent = 'Cấp Mới Tài Khoản Email';
       document.getElementById('accManagerPic').value = 'Quang Đặng (quang.dang1@ntq-solution.com.vn)';
@@ -466,6 +481,7 @@ const App = {
       const defaultExp = new Date();
       defaultExp.setMonth(defaultExp.getMonth() + 3);
       document.getElementById('accExpiresAt').value = defaultExp.toISOString().split('T')[0];
+      if (deleteBtn) deleteBtn.style.display = 'none';
     }
 
     this.openModal('accountModal');
@@ -558,6 +574,18 @@ const App = {
     this.closeModal('revokeModal');
     this.renderAll();
     Utils.showToast("Đã thu hồi tài khoản thành công!");
+  },
+
+  // Delete account completely
+  handleDeleteAccount(accountId) {
+    const acc = Store.accounts.find(a => a.id === accountId);
+    if (!acc) return;
+
+    if (confirm(`Bạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản "${acc.email}" khỏi hệ thống sổ cái?\n\nLưu ý: Thao tác này sẽ loại bỏ hoàn toàn tài khoản khỏi danh sách.`)) {
+      Store.deleteAccount(accountId);
+      this.renderAll();
+      Utils.showToast(`Đã xóa vĩnh viễn tài khoản ${acc.email}`);
+    }
   },
 
   // Quick suspend/activate

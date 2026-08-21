@@ -353,6 +353,24 @@ const Store = {
     return importedCount;
   },
 
+  // Delete account completely
+  deleteAccount(id) {
+    const index = this.accounts.findIndex(a => a.id === id);
+    if (index === -1) return null;
+
+    const removed = this.accounts.splice(index, 1)[0];
+    this.saveAccounts();
+
+    this.addAuditLog(
+      id,
+      removed.email,
+      'DELETE',
+      `Xóa vĩnh viễn tài khoản ${removed.email} khỏi hệ thống sổ cái (Dự án: ${removed.project_name || 'N/A'})`
+    );
+
+    return removed;
+  },
+
   // Reset to initial mock dataset
   resetToMockData() {
     this.accounts = [...INITIAL_MOCK_ACCOUNTS];
